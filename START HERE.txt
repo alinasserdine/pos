@@ -1,0 +1,10 @@
+ALIND POS - CLIENT COPY
+
+1. Extract the ZIP file completely.
+2. Open the "Alind POS" folder.
+3. Double-click "Alind POS.exe".
+4. Complete the first-time setup and create the client's administrator account.
+
+Keep the entire Alind POS folder together. The program includes its own runtime and does not require Java to be installed separately.
+
+The client's data will be created inside the "data-home" folder on first launch. Back up that folder regularly and do not share it with another client.

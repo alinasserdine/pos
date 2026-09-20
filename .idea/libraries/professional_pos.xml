@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="professional-pos">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/professional-pos.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
