@@ -1,0 +1,9 @@
+target/
+release/
+data/*
+backups/*
+exports/*
+logs/*
+receipts/*
+*.iml
+.idea/

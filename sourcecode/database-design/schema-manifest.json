@@ -1,0 +1,730 @@
+{
+  "schema_version": 3,
+  "tables": [
+    {
+      "table": "schema_version",
+      "columns": [
+        "version_no",
+        "checksum",
+        "installed_at"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "app_settings",
+      "columns": [
+        "setting_key",
+        "setting_value"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "business_profile",
+      "columns": [
+        "id",
+        "store_name",
+        "legal_name",
+        "address",
+        "phone",
+        "email",
+        "tax_number",
+        "country",
+        "time_zone",
+        "footer",
+        "logo_path"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "roles",
+      "columns": [
+        "id",
+        "role_code",
+        "name"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "permissions",
+      "columns": [
+        "permission_code"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "role_permissions",
+      "columns": [
+        "role_id",
+        "permission_code"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "users",
+      "columns": [
+        "id",
+        "username",
+        "full_name",
+        "password_hash",
+        "role_id",
+        "active",
+        "failed_attempts",
+        "locked_until",
+        "last_login",
+        "must_change",
+        "created_at"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "currencies",
+      "columns": [
+        "code",
+        "name",
+        "symbol",
+        "decimal_places",
+        "symbol_before",
+        "active"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "exchange_rates",
+      "columns": [
+        "id",
+        "currency_code",
+        "effective_date",
+        "rate_to_base",
+        "created_by",
+        "created_at",
+        "UNIQUE(currency_code,effective_date)"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "tax_rates",
+      "columns": [
+        "id",
+        "name",
+        "rate",
+        "active"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "categories",
+      "columns": [
+        "id",
+        "name",
+        "name_ar",
+        "tax_id",
+        "active"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "units",
+      "columns": [
+        "id",
+        "name",
+        "name_ar",
+        "fractional",
+        "active"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "parties",
+      "columns": [
+        "id",
+        "kind",
+        "code",
+        "name",
+        "company",
+        "contact",
+        "phone",
+        "email",
+        "address",
+        "tax_number",
+        "currency_code",
+        "credit_limit",
+        "terms_days",
+        "discount_pct",
+        "notes",
+        "active"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "products",
+      "columns": [
+        "id",
+        "sku",
+        "name",
+        "name_ar",
+        "description",
+        "brand",
+        "category_id",
+        "unit_id",
+        "tax_id",
+        "preferred_supplier_id",
+        "parent_product_id",
+        "variant_label",
+        "price",
+        "wholesale_price",
+        "current_cost",
+        "last_cost",
+        "on_hand",
+        "stock_value",
+        "min_stock",
+        "reorder_level",
+        "max_stock",
+        "track_stock",
+        "allow_negative",
+        "fractional",
+        "favorite",
+        "active",
+        "created_at",
+        "updated_at"
+      ],
+      "foreign_keys": 5
+    },
+    {
+      "table": "product_barcodes",
+      "columns": [
+        "id",
+        "product_id",
+        "barcode",
+        "is_primary"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "price_history",
+      "columns": [
+        "id",
+        "product_id",
+        "old_price",
+        "new_price",
+        "old_cost",
+        "new_cost",
+        "user_id",
+        "reason",
+        "changed_at"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "accounts",
+      "columns": [
+        "id",
+        "code",
+        "name",
+        "name_ar",
+        "account_type",
+        "parent_id",
+        "system_account",
+        "active"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "payment_methods",
+      "columns": [
+        "code",
+        "name",
+        "account_code",
+        "active",
+        "is_cash"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "document_sequences",
+      "columns": [
+        "sequence_code",
+        "next_value"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "cash_sessions",
+      "columns": [
+        "id",
+        "user_id",
+        "opened_at",
+        "closed_at",
+        "opening_cash",
+        "expected_cash",
+        "counted_cash",
+        "difference",
+        "notes"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "purchase_orders",
+      "columns": [
+        "id",
+        "number",
+        "supplier_id",
+        "ordered_on",
+        "expected_on",
+        "currency_code",
+        "rate_to_base",
+        "status",
+        "notes",
+        "created_by"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "po_lines",
+      "columns": [
+        "id",
+        "order_id",
+        "product_id",
+        "quantity",
+        "received_qty",
+        "unit_cost",
+        "discount_pct",
+        "tax_rate"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "documents",
+      "columns": [
+        "id",
+        "kind",
+        "number",
+        "request_key",
+        "original_id",
+        "exchange_id",
+        "order_id",
+        "party_id",
+        "party_name",
+        "party_address",
+        "party_tax_number",
+        "document_date",
+        "created_at",
+        "due_date",
+        "currency_code",
+        "rate_to_base",
+        "subtotal",
+        "discount",
+        "net",
+        "tax",
+        "total",
+        "base_net",
+        "base_tax",
+        "base_total",
+        "cogs",
+        "status",
+        "reference",
+        "notes",
+        "reason",
+        "store_name",
+        "store_address",
+        "store_phone",
+        "store_tax_number",
+        "logo_path",
+        "footer",
+        "created_by",
+        "approved_by",
+        "cash_session_id"
+      ],
+      "foreign_keys": 7
+    },
+    {
+      "table": "document_lines",
+      "columns": [
+        "id",
+        "document_id",
+        "original_line_id",
+        "po_line_id",
+        "product_id",
+        "product_name",
+        "product_name_ar",
+        "sku",
+        "barcode",
+        "category_name",
+        "unit_name",
+        "quantity",
+        "unit_price",
+        "discount",
+        "tax_name",
+        "tax_rate",
+        "net",
+        "tax",
+        "total",
+        "base_net",
+        "base_tax",
+        "base_total",
+        "cost_total",
+        "cost_basis",
+        "returned_qty",
+        "disposition",
+        "note"
+      ],
+      "foreign_keys": 4
+    },
+    {
+      "table": "payments",
+      "columns": [
+        "id",
+        "document_id",
+        "method_code",
+        "currency_code",
+        "rate_to_base",
+        "amount",
+        "base_amount",
+        "tendered",
+        "change_amount",
+        "direction",
+        "reference",
+        "cash_session_id"
+      ],
+      "foreign_keys": 4
+    },
+    {
+      "table": "party_entries",
+      "columns": [
+        "id",
+        "party_id",
+        "document_id",
+        "currency_code",
+        "amount",
+        "base_amount",
+        "open_amount",
+        "open_base",
+        "due_date",
+        "reminder_date",
+        "created_at"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "allocations",
+      "columns": [
+        "id",
+        "settlement_entry_id",
+        "invoice_entry_id",
+        "amount",
+        "historical_base",
+        "settlement_base",
+        "fx_difference",
+        "created_at",
+        "CHECK(settlement_entry_id<>invoice_entry_id)"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "journal_entries",
+      "columns": [
+        "id",
+        "number",
+        "document_id",
+        "journal_date",
+        "description",
+        "reversal_of",
+        "created_by",
+        "posted_at"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "journal_lines",
+      "columns": [
+        "id",
+        "entry_id",
+        "account_id",
+        "debit",
+        "credit",
+        "memo",
+        "CHECK((debit>0"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "stock_movements",
+      "columns": [
+        "id",
+        "product_id",
+        "document_id",
+        "document_line_id",
+        "movement_type",
+        "quantity",
+        "before_qty",
+        "after_qty",
+        "cost_value",
+        "reason",
+        "user_id",
+        "created_at",
+        "CHECK(after_qty=before_qty+quantity)"
+      ],
+      "foreign_keys": 4
+    },
+    {
+      "table": "cost_layers",
+      "columns": [
+        "id",
+        "product_id",
+        "movement_id",
+        "original_quantity",
+        "remaining_qty",
+        "original_value",
+        "remaining_value",
+        "acquired_at",
+        "CHECK(remaining_qty<=original_quantity)"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "cost_consumptions",
+      "columns": [
+        "id",
+        "movement_id",
+        "layer_id",
+        "quantity",
+        "cost_value"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "cash_movements",
+      "columns": [
+        "id",
+        "session_id",
+        "document_id",
+        "movement_type",
+        "amount",
+        "reason",
+        "created_by",
+        "created_at"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "held_sales",
+      "columns": [
+        "id",
+        "number",
+        "party_id",
+        "user_id",
+        "currency_code",
+        "discount_value",
+        "discount_percent",
+        "note",
+        "created_at"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "held_lines",
+      "columns": [
+        "id",
+        "held_id",
+        "product_id",
+        "quantity",
+        "price",
+        "discount_value",
+        "discount_percent",
+        "note"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "stock_counts",
+      "columns": [
+        "id",
+        "number",
+        "status",
+        "created_by",
+        "created_at",
+        "posted_document_id"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "stock_count_lines",
+      "columns": [
+        "id",
+        "count_id",
+        "product_id",
+        "expected",
+        "counted",
+        "UNIQUE(count_id,product_id)"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "period_locks",
+      "columns": [
+        "id",
+        "start_date",
+        "end_date",
+        "locked_by",
+        "reason",
+        "active",
+        "CHECK(start_date<=end_date)"
+      ],
+      "foreign_keys": 1
+    },
+    {
+      "table": "notifications",
+      "columns": [
+        "id",
+        "notification_key",
+        "kind",
+        "entity_id",
+        "message",
+        "created_at",
+        "resolved"
+      ],
+      "foreign_keys": 0
+    },
+    {
+      "table": "notification_reads",
+      "columns": [
+        "notification_id",
+        "user_id"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "audit_logs",
+      "columns": [
+        "id",
+        "user_id",
+        "action",
+        "entity_type",
+        "entity_id",
+        "old_summary",
+        "new_summary",
+        "reason",
+        "approved_by",
+        "created_at"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "fx_revaluations",
+      "columns": [
+        "id",
+        "valuation_date",
+        "currency_code",
+        "document_id",
+        "status",
+        "reversed_by_document_id",
+        "created_by",
+        "created_at",
+        "UNIQUE(valuation_date,currency_code)"
+      ],
+      "foreign_keys": 4
+    },
+    {
+      "table": "fx_revaluation_lines",
+      "columns": [
+        "id",
+        "revaluation_id",
+        "party_entry_id",
+        "party_id",
+        "open_amount",
+        "previous_open_base",
+        "closing_open_base",
+        "difference",
+        "UNIQUE(revaluation_id,party_entry_id)"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "inventory_revaluations",
+      "columns": [
+        "id",
+        "document_id",
+        "product_id",
+        "old_value",
+        "new_value",
+        "reason",
+        "created_by",
+        "created_at"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "damaged_inventory",
+      "columns": [
+        "id",
+        "product_id",
+        "source_document_line_id",
+        "quantity",
+        "remaining_quantity",
+        "historical_cost",
+        "carrying_value",
+        "status",
+        "CHECK(remaining_quantity<=quantity)"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "damaged_inventory_events",
+      "columns": [
+        "id",
+        "damaged_inventory_id",
+        "document_id",
+        "event_type",
+        "quantity",
+        "value_change",
+        "reason",
+        "created_by",
+        "created_at"
+      ],
+      "foreign_keys": 3
+    },
+    {
+      "table": "card_settlements",
+      "columns": [
+        "id",
+        "document_id",
+        "settlement_date",
+        "gross_amount",
+        "fee_net",
+        "fee_tax",
+        "net_deposit",
+        "reference",
+        "created_by",
+        "created_at",
+        "CHECK(net_deposit+fee_net+fee_tax=gross_amount)"
+      ],
+      "foreign_keys": 2
+    },
+    {
+      "table": "period_closures",
+      "columns": [
+        "id",
+        "start_date",
+        "end_date",
+        "document_id",
+        "lock_id",
+        "status",
+        "reversed_by_document_id",
+        "reason",
+        "created_by",
+        "created_at",
+        "CHECK(start_date<=end_date)"
+      ],
+      "foreign_keys": 4
+    }
+  ],
+  "views": [
+    "sales",
+    "sale_items",
+    "sale_returns",
+    "purchases",
+    "purchase_returns",
+    "customers",
+    "suppliers",
+    "v_sales_facts"
+  ]
+}
